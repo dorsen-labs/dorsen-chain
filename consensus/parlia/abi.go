@@ -801,9 +801,9 @@ const validatorSetABIBeforeLuban = `
       "name": "bscChainID",
       "outputs": [
         {
-          "internalType": "uint16",
+          "internalType": "uint32",
           "name": "",
-          "type": "uint16"
+          "type": "uint32"
         }
       ],
       "stateMutability": "view",
@@ -2015,8 +2015,8 @@ const validatorSetABI = `
     "outputs": [
       {
         "name": "",
-        "type": "uint16",
-        "internalType": "uint16"
+        "type": "uint32",
+        "internalType": "uint32"
       }
     ],
     "stateMutability": "view"
@@ -3519,8 +3519,8 @@ const slashABI = `
     "outputs": [
       {
         "name": "",
-        "type": "uint16",
-        "internalType": "uint16"
+        "type": "uint32",
+        "internalType": "uint32"
       }
     ],
     "stateMutability": "view"
