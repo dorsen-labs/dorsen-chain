@@ -83,6 +83,7 @@ var (
 		utils.OverridePasteur,
 		utils.OverrideVerkle,
 		utils.OverrideGenesisFlag,
+		utils.BlacklistFileFlag,
 		utils.OverrideFullImmutabilityThreshold,
 		utils.OverrideMinBlocksForBlobRequests,
 		utils.OverrideDefaultExtraReserveForBlobRequests,

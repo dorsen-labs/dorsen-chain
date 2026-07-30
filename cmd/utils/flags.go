@@ -349,6 +349,12 @@ var (
 		Usage:    "Load genesis block and configuration from file at this path",
 		Category: flags.EthCategory,
 	}
+	BlacklistFileFlag = &cli.PathFlag{
+		Name:      "blacklist",
+		Usage:     "Path to JSON file containing blacklisted wallet addresses",
+		TakesFile: true,
+		Category:  flags.EthCategory,
+	}
 	OverrideFullImmutabilityThreshold = &cli.Uint64Flag{
 		Name:     "override.immutabilitythreshold",
 		Usage:    "It is the number of blocks after which a chain segment is considered immutable, only for testing purpose",

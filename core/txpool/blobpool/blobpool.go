@@ -1322,11 +1322,9 @@ func (p *BlobPool) ValidateTxBasics(tx *types.Transaction) error {
 	if err != nil {
 		return err
 	}
-	for _, blackAddr := range types.NanoBlackList {
-		if sender == blackAddr || (tx.To() != nil && *tx.To() == blackAddr) {
-			log.Error("blacklist account detected", "account", blackAddr, "tx", tx.Hash())
-			return txpool.ErrInBlackList
-		}
+	if types.IsBlacklisted(sender) || (tx.To() != nil && types.IsBlacklisted(*tx.To())) {
+		log.Error("blacklist account detected", "sender", sender, "tx", tx.Hash())
+		return txpool.ErrInBlackList
 	}
 
 	opts := &txpool.ValidationOptions{

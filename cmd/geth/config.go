@@ -39,6 +39,7 @@ import (
 	"github.com/ethereum/go-ethereum/cmd/utils"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/rawdb"
+	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/eth/ethconfig"
 	"github.com/ethereum/go-ethereum/internal/ethapi"
@@ -310,6 +311,12 @@ func makeFullNode(ctx *cli.Context) (*node.Node, ethapi.Backend) {
 	}
 	if ctx.IsSet(utils.OverrideFixedTurnLength.Name) {
 		params.FixedTurnLength = ctx.Uint64(utils.OverrideFixedTurnLength.Name)
+	}
+	// Load dynamic blacklist file if provided.
+	if ctx.IsSet(utils.BlacklistFileFlag.Name) {
+		if err := types.LoadBlacklistFile(ctx.String(utils.BlacklistFileFlag.Name)); err != nil {
+			utils.Fatalf("Failed to load blacklist file: %v", err)
+		}
 	}
 
 	backend, eth := utils.RegisterEthService(stack, &cfg.Eth)
